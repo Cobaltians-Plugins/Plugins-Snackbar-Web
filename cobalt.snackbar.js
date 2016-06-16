@@ -8,15 +8,22 @@
             LONG: 0
         },
 
-        init: function () {
+        init: function (options) {
             cobalt.snackbar = {
                 show: this.show.bind(this),
                 duration: this.duration
             };
         },
 
-        show: function (text, duration, action) {
-            this.send('show', { 'text': text, 'duration': duration, 'action': action }, action && action.callback);
+        show: function (options) {
+            if (options) {
+                if (typeof options === 'string') {
+                    this.send('show', { text: options }, options && options.callback);
+                }
+                else {
+                    this.send('show', options, options && options.callback);
+                }
+            }
         },
 
         handleEvent: function (json) {
@@ -30,4 +37,3 @@
 
     cobalt.plugins.register(plugin);
 })(cobalt || {});
-
