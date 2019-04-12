@@ -15,18 +15,15 @@
         show: function (options) {
             if (options) {
                 if (typeof options === 'string') {
-                    this.send('show', { text: options }, options && options.callback);
+                    cobalt.plugins.send(this, 'show', { text: options }, options && options.callback);
                 }
                 else {
-                    this.send('show', options, options && options.callback);
+                    cobalt.plugins.send(this, 'show', options, options && options.callback);
                 }
             }
         },
         handleEvent: function (json) {
             cobalt.log(this.name, ' received unhandled event: ', json);
-        },
-        send: function (action, data, callback) {
-            cobalt.send({ type: 'plugin', name: this.name, action: action, data: data }, callback);
         }
     };
 
