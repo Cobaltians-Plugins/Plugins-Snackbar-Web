@@ -1,6 +1,9 @@
 (function (cobalt) {
     var plugin = {
-        name: 'snackbar',
+        classes: {
+			ios: 'CobaltSnackbarPlugin',
+			android: 'io.kristal.snackbarplugin.SnackbarPlugin'
+        },
         duration: {
             INFINITE: -2,
             SHORT: -1,
@@ -21,11 +24,7 @@
                     cobalt.plugins.send(this, 'show', options, options && options.callback);
                 }
             }
-        },
-        handleEvent: function (json) {
-            cobalt.log(this.name, ' received unhandled event: ', json);
         }
     };
-
     cobalt.plugins.register(plugin);
 })(cobalt || {});
