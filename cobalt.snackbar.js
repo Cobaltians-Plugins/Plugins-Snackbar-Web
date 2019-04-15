@@ -1,5 +1,6 @@
 (function(cobalt) {
   var plugin = {
+    name: 'CobaltSnackbarPlugin',
     classes: {
       ios: 'CobaltSnackbarPlugin',
       android: 'io.kristal.snackbarplugin.SnackbarPlugin'
