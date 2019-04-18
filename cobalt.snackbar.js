@@ -22,19 +22,13 @@
           cobalt.plugins.send(this, 'show', {text: options}, options && options.callback);
         }
         else {
-          this.onSnackbarResult = options.callback;
           cobalt.plugins.send(this, 'show', {
             text: options.text,
             duration: options.duration,
             button: options.button,
             buttonColor: options.buttonColor
-          });
+          }, options.callback);
         }
-      }
-    },
-    handleEvent: function(json) {
-      if (typeof this.onSnackbarResult === 'function') {
-        this.onSnackbarResult(json.data)
       }
     }
   };
